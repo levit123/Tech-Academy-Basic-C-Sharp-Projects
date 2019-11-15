@@ -7,15 +7,31 @@ namespace iteration_assignment
     {
         static void Main()
         {
-            /*creates an empty array of strings*/
+            /*creates and defines an array of strings*/
             string[] strArray = new string[3];
-            /*user defines each string in the array*/
+            strArray[0] = "Pope";
+            strArray[1] = "Bishop";
+            strArray[2] = "Priest";
+            
+            /*user inputs a series of strings*/
             /*uses the < operator as the comparison*/
             for (int i = 0; i < strArray.Length; i++)
             {
                 Console.Write("Enter a string: ");
-                strArray[i] = Console.ReadLine();
+                strArray[i] = strArray[i] + Console.ReadLine();
+                
             }
+
+            /*infinite loop
+            for (int i = 0; i < 1;)
+            {
+                Console.WriteLine("It goes on and on and on and on");
+            }
+
+            to terminate the loop above, we would have to add the part of the "for" loop that adjusts the counter, "i", each iteration.
+            example:
+            for (int i = 0; i < 1; i++)
+            */
 
             /*spacing*/
             Console.WriteLine("\n");
@@ -46,17 +62,18 @@ namespace iteration_assignment
             Console.WriteLine("\n");
 
             /*searches the list for the user-defined string*/
-            for (int i = 0; i < 5; i++)
+            int index = 0;
+            for (index = 0; index < 5; index++)
             {
-                if (strList[i] == input)
+                if (strList[index] == input)
                 {
-                    Console.WriteLine("SUCCESS: Found string \"" + input + "\" at index " + i + " in the list");
+                    Console.WriteLine("SUCCESS: Found string \"" + input + "\" at index " + index + " in the list");
                     break;
                 }
-                else
-                {
-                    Console.WriteLine("ERROR: Did not find string \"" + input + "\" at index " + i + " in the list");
-                }
+            }
+            if (index >= 5)
+            {
+                Console.WriteLine("ERROR: " + input + " is not in the list");
             }
 
             /*spacing*/
@@ -86,16 +103,18 @@ namespace iteration_assignment
             Console.WriteLine("\n");
 
             /*searches the list for the user-defined string*/
+            bool matchFound = false;
             for (int i = 0; i < 4; i++)
             {
                 if (strList2[i] == input)
                 {
                     Console.WriteLine("SUCCESS: Found string \"" + input + "\" at index " + i + " in the list");
+                    matchFound = true;
                 }
-                else
-                {
-                    Console.WriteLine("ERROR: Did not find string \"" + input + "\" at index " + i + " in the list.");
-                }
+            }
+            if (matchFound == false)
+            {
+                Console.WriteLine("ERROR: " + input + " is not in the list");
             }
 
             /*spacing*/
@@ -110,19 +129,23 @@ namespace iteration_assignment
             strList3.Add("Penguin");
 
             /*functions as a counter*/
-            int count = 0;
+            int count = -1;
 
             /*iterates through the list and says whether or not the current item in the list is in an earlier entry in the list*/
             foreach (string element in strList3)
             {
-                /*goes through the previous items in the list up to the current item in the foreach loop (marked as "element"), and compares the previous
-                 * items in the list to the current item to see if the current item has been found earlier in the list*/
-                for (int i = 0; i < count; i++)
+                int i;
+                for (i = 0; i <= count; i++)
                 {
                     if (strList3[i] == element)
                     {
                         Console.WriteLine(element + " has appeared before in this list");
+                        break;
                     }
+                }
+                if (i > count)
+                {
+                    Console.WriteLine(element + " has not appeared before in this list");
                 }
                 count++;
             }
