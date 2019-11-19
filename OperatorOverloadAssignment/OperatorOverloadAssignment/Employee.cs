@@ -1,12 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace OperatorOverloadAssignment
 {
     /*class that is inherited from Person*/
-    public class Employee : Person
+    public class Employee<T> : Person
     {
         /*Properties*/
         public int Id { get; set; }
+        public List<T> Things { get; set; }
 
         /*constructor for the inherited class*/
         public Employee(string fname, string lname, int ident) : base(fname, lname)

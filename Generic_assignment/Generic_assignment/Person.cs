@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OperatorOverloadAssignment
+namespace Generic_assignment
 {
     /*abstract base class*/
     public class Person
